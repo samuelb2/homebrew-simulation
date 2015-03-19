@@ -36,6 +36,9 @@ class Ogre19 < Formula
     sha1 'c520d0641183bb275a0b29ef6188353bc2ba6217'
   end
 
+  # The pathin :DATA is to fix the installed FinOGRE.cmake so it works on OS X with the above patches
+  patch :p1, :DATA
+
   depends_on 'boost'
   depends_on 'cmake' => :build
   depends_on 'doxygen'
@@ -87,3 +90,17 @@ class Ogre19 < Formula
     false
   end
 end
+__END__
+diff --git a/CMake/Packages/FindOGRE.cmake b/CMake/Packages/FindOGRE.cmake
+index fbbf949..cd29a8e 100644
+--- a/CMake/Packages/FindOGRE.cmake
++++ b/CMake/Packages/FindOGRE.cmake
+@@ -71,7 +71,7 @@ else ()
+ endif ()
+ 
+ if(APPLE AND NOT OGRE_STATIC)
+-	set(OGRE_LIBRARY_NAMES "Ogre${OGRE_LIB_SUFFIX}")
++	set(OGRE_LIBRARY_NAMES "OgreMain${OGRE_LIB_SUFFIX}")
+ else()
+     set(OGRE_LIBRARY_NAMES "OgreMain${OGRE_LIB_SUFFIX}")
+ endif()
