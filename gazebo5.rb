@@ -13,7 +13,7 @@ class Gazebo5 < Formula
   depends_on 'doxygen'
   depends_on 'freeimage'
   depends_on 'libtar'
-  depends_on 'ogre'
+  depends_on 'ogre-1.9'
   depends_on 'protobuf'
   depends_on 'protobuf-c'
   depends_on 'qt'
